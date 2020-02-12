@@ -4,6 +4,8 @@ const path = require("path");
 const hbs = require("express-handlebars");
 const app = express();
 const { mongoDbUrl } = require("./config/configuration");
+const { PORT } = require("./config/configuration");
+
 /* Connect to DB */
 mongoose
   .connect(mongoDbUrl, { useNewUrlParser: true })
@@ -28,6 +30,6 @@ const defaultRouter = require("./routes/defaultRouter");
 app.use("/", defaultRouter);
 
 // Server started
-app.listen(4000, () => {
-  console.log("Server running on port 4k");
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
 });
